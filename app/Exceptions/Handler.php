@@ -62,8 +62,27 @@ class Handler extends ExceptionHandler
 //     */
     public function render($request, Throwable $exception)
     {
+        if ($exception instanceof QueryException) {
+            clog('查询错误', [
+                'param' => $request->all(),
+                'url' => $request->fullUrl(),
+                'msg' => $exception->getMessage(),
+            ], 'sql_error');
+            if (strpos($request->getRequestUri(), config('admin.route.prefix')) === 1) {
+                return parent::render($request, $exception);
+            }
+            return response()->json([
+                'code' =>  500,
+                'msg' => '查询出错',
+                'data' => [
+                    'msg' => $exception->getMessage()
+                ]
+            ], 200);
+        }
 
-//        return parent::render($request, $exception);
+        if (strpos($request->getRequestUri(), config('admin.route.prefix')) === 1) {
+            return parent::render($request, $exception);
+        }
         if (in_array($exception::class, $this->dontReport)) {
             return parent::render($request, $exception);
         }
@@ -83,20 +102,7 @@ class Handler extends ExceptionHandler
                 'data' => []
             ], 200);
         }
-        if ($exception instanceof QueryException) {
-            clog('查询错误', [
-                'param' => $request->all(),
-                'url' => $request->fullUrl(),
-                'msg' => $exception->getMessage(),
-            ], 'sql_error');
-            return response()->json([
-                'code' =>  500,
-                'msg' => '查询出错',
-                'data' => [
-                    'msg' => $exception->getMessage()
-                ]
-            ], 200);
-        }
+
         clog('系统错误', [
             'param' => $request->all(),
             'url' => $request->fullUrl(),

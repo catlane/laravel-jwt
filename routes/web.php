@@ -14,5 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+
+    return redirect(config('admin.route.prefix'));
+    echo '非法访问';
+//    return view('welcome');
 });
+
+Route::get('api-doc', [\App\Http\Controllers\DataCollectController::class, 'apiDoc']);

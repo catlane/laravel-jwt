@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3fd6d07e67150bf23999666c2234398b",
+    "content-hash": "e943201213f3f60d08cf6745896ddd86",
     "packages": [
         {
             "name": "brick/math",
@@ -60,6 +60,64 @@
                 }
             ],
             "time": "2023-01-15T23:15:59+00:00"
+        },
+        {
+            "name": "catlane/dcat-sys-config",
+            "version": "v2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/catlane/dcat-extension-SysConfig.git",
+                "reference": "83b96380c82e8abc299536d301f5cc42b2907c22"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/catlane/dcat-extension-SysConfig/zipball/83b96380c82e8abc299536d301f5cc42b2907c22",
+                "reference": "83b96380c82e8abc299536d301f5cc42b2907c22",
+                "shasum": ""
+            },
+            "require": {
+                "dcat/laravel-admin": "~2.0",
+                "guzzlehttp/guzzle": "^7.7",
+                "php": "^8.0.2"
+            },
+            "type": "library",
+            "extra": {
+                "dcat-admin": "Catlane\\SysConfig\\SysConfigServiceProvider",
+                "laravel": {
+                    "providers": [
+                        "Catlane\\SysConfig\\SysConfigServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helper.php"
+                ],
+                "psr-4": {
+                    "Catlane\\SysConfig\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Catlane",
+                    "email": "catlane@foxmail.com"
+                }
+            ],
+            "description": "后台配置项，将一些配置项变为后台管理员可操作",
+            "homepage": "https://github.com/catlane/SysConfig",
+            "keywords": [
+                "dcat-admin",
+                "extension"
+            ],
+            "support": {
+                "issues": "https://github.com/catlane/dcat-extension-SysConfig/issues",
+                "source": "https://github.com/catlane/dcat-extension-SysConfig/tree/v2.0"
+            },
+            "time": "2023-07-17T08:56:25+00:00"
         },
         {
             "name": "dcat/laravel-admin",
@@ -8916,7 +8974,9 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^8.0.2"
+        "php": "^8.0.2",
+        "ext-openssl": "*",
+        "ext-pdo": "*"
     },
     "platform-dev": [],
     "plugin-api-version": "2.3.0"

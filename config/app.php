@@ -214,5 +214,6 @@ return [
 
 
     'api_key' => '49BA59ABBE56E057',//用来加密sign的
+    'phone_key' => 'XbhVQng7Ke#Owjfz3lvy8W5HSZ2rPxsJ#G1QTl',#手机号加解密的key
 
 ];

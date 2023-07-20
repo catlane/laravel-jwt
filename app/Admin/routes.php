@@ -13,5 +13,7 @@ Route::group([
 ], function (Router $router) {
 
     $router->get('/', 'HomeController@index');
+    $router->resource('api-channels', 'ApiChannelsController');
+    $router->resource('api-data-collect', 'ApiDataCollectController');
 
 });

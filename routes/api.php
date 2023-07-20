@@ -26,3 +26,4 @@ Route::group([
     Route::post('me', [\App\Http\Controllers\AuthController::class,'me']);
     Route::post('reset-pwd', [\App\Http\Controllers\AuthController::class,'resetPwd']);
 });
+Route::post('data-collect', [\App\Http\Controllers\DataCollectController::class, 'create']);
